@@ -41,4 +41,16 @@ public class Movie {
         return genre;
     }
 
+    @Override
+    public String toString (){
+        String s = "";
+        if (isInColor == true){
+            s = "yes";
+        } else {
+            s = "no";
+        }
+
+        return String.format("%s \n\tDirector: %s \n\tYear created: %d \n\tIn color: %s \n\tLength in minutes: %d \n\tGenre: %s \n"
+                ,titel, director, yearCreated, s, lengthInMinutes, genre);
+    }
 }

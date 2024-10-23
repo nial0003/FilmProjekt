@@ -5,13 +5,19 @@ public class Main {
 
         Controller cont = new Controller();
         Scanner sc = new Scanner(System.in);
+        cont.addMovie("Inception", "Christopher Nolan", 2010, true, 148, "Science Fiction");
+        cont.addMovie("The Godfather", "Francis Ford Coppola", 1972, true, 175, "Crime/Drama");
+        cont.addMovie("Pulp Fiction", "Quentin Tarantino", 1994, true, 154, "Crime");
+        cont.addMovie("Schindler's List", "Steven Spielberg", 1993, true, 195, "Historical/Drama");
+        cont.addMovie("Casablanca", "Michael Curtiz", 1942, false, 102, "Romance/Drama");
 
         System.out.println("!---------- Welcome to your movie collection!----------!");
 
         while (true) {
             System.out.println("""
                     1. Create movie
-                    2. Exit
+                    2. Show movies
+                    3. Exit
                     """);
             String input = sc.next();
             switch (input) {
@@ -45,7 +51,9 @@ public class Main {
 
                     cont.addMovie(movieTitel, movieDirector, yearCreated, inColor, lengthInMinutes, genre);
                 }
-                case "2", "exit" -> {
+                case "2", "show", "show movies" -> System.out.println(cont.showMovies());
+
+                case "3", "exit" -> {
                     System.out.println("Exiting your movie collection.");
                     return;
                 }

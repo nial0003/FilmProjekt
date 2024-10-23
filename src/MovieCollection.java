@@ -12,6 +12,14 @@ public class MovieCollection {
         listOfMovies.add(new Movie(titel, director, yearCreated, isInColor, lengthInMinutes, genre));
     }
 
+    public String showMovies () {
+        String s = "";
+        for (Movie movie : listOfMovies){
+            s += movie.toString()+"\n";
+        }
+        return s;
+    }
+
 
 
 }
