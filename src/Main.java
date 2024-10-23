@@ -10,6 +10,7 @@ public class Main {
         cont.addMovie("Pulp Fiction", "Quentin Tarantino", 1994, true, 154, "Crime");
         cont.addMovie("Schindler's List", "Steven Spielberg", 1993, true, 195, "Historical/Drama");
         cont.addMovie("Casablanca", "Michael Curtiz", 1942, false, 102, "Romance/Drama");
+        cont.addMovie("Skyfall", "Sam Mendes", 2012, true, 143, "Action");
 
         System.out.println("!---------- Welcome to your movie collection!----------!");
 
@@ -17,7 +18,8 @@ public class Main {
             System.out.println("""
                     1. Create movie
                     2. Show movies
-                    3. Exit
+                    3. Search movie
+                    4. Exit
                     """);
             String input = sc.next();
             switch (input) {
@@ -53,7 +55,12 @@ public class Main {
                 }
                 case "2", "show", "show movies" -> System.out.println(cont.showMovies());
 
-                case "3", "exit" -> {
+                case "3", "search", "search movie" -> {
+                    System.out.println("Enter the titel of the movie, you wish to find: ");
+                    System.out.println(cont.findMovie(sc.next()));
+                }
+
+                case "4", "exit" -> {
                     System.out.println("Exiting your movie collection.");
                     return;
                 }

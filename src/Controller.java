@@ -9,4 +9,8 @@ public class Controller {
     public String showMovies(){
         return movieCollection.showMovies();
     }
+
+    public String findMovie (String input) {
+        return movieCollection.findMovie(input);
+    }
 }

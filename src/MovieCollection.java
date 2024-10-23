@@ -20,6 +20,12 @@ public class MovieCollection {
         return s;
     }
 
-
-
+    public String findMovie (String input) {
+        for (Movie movie : listOfMovies) {
+            if (movie.getTitel().toLowerCase().contains(input.toLowerCase())){
+                return movie.toString();
+            }
+        }
+        return "Movie not found.";
+    }
 }
