@@ -8,9 +8,10 @@ public class MovieCollection {
         listOfMovies = new ArrayList<>();
     }
 
-    public void addMovie (Movie movie) {
-        listOfMovies.add(movie);
+    public void addMovie (String titel, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
+        listOfMovies.add(new Movie(titel, director, yearCreated, isInColor, lengthInMinutes, genre));
     }
+
 
 
 }
