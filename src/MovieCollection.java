@@ -21,11 +21,16 @@ public class MovieCollection {
     }
 
     public String findMovie (String input) {
+        String s ="";
         for (Movie movie : listOfMovies) {
-            if (movie.getTitel().toLowerCase().contains(input.toLowerCase())){
-                return movie.toString();
+            if (movie.getTitel().toLowerCase().startsWith(input.toLowerCase())){
+                s += movie +"\n";
             }
         }
-        return "Movie not found.";
+        if (!s.isEmpty()){
+            return s;
+        } else {
+            return "Movie not found.";
+        }
     }
 }
