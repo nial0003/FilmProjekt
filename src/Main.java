@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        MovieCollection listOfMovies = new MovieCollection();
+        Controller cont = new Controller();
         Scanner sc = new Scanner(System.in);
 
         System.out.println("!---------- Welcome to your movie collection!----------!");
@@ -43,7 +43,7 @@ public class Main {
                     System.out.print("Genre: ");
                     String genre = sc.next();
 
-                    listOfMovies.addMovie(movieTitel, movieDirector, yearCreated, inColor, lengthInMinutes, genre);
+                    cont.addMovie(movieTitel, movieDirector, yearCreated, inColor, lengthInMinutes, genre);
                 }
                 case "2", "exit" -> {
                     System.out.println("Exiting your movie collection.");
