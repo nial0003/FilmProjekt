@@ -27,7 +27,17 @@ public class UserInterface {
                     """);
             String input = sc.nextLine();
             switch (input) {
-                case "1", "create", "create movie" -> createMovieCase();
+                case "1", "create", "create movie" -> {
+                    createMovieCase();
+                    while (true){
+                        System.out.println("Do you wish to creat another movie yes/no?");
+                        if (sc.nextLine().equalsIgnoreCase("yes")){
+                            createMovieCase();
+                        } else {
+                            break;
+                        }
+                    }
+                }
 
                 case "2", "show", "show movies" -> System.out.println(cont.showMovies());
 
@@ -70,90 +80,29 @@ public class UserInterface {
                         }
 
                         Movie chosenMovie = moreThanOneMovie.get(userChoice);
-                        System.out.println("Do you wish to edit the title, director, year created, is in color, length or genre?");
-                        String partToEdit = sc.nextLine();
-                        switch (partToEdit){
-                            case "title"-> {
-                                System.out.println("current title is: " + chosenMovie.getTitle());
-                                System.out.println("Enter new title of the movie: ");
-                                chosenMovie.setTitle(sc.nextLine());
-                            }
-                            case "director"->{
-                                System.out.println("current director is: " +chosenMovie.getDirector());
-                                System.out.println("Enter new director of the movie: ");
-                                chosenMovie.setDirector(sc.nextLine());
-                            }
-                            case "year created" ->{
-                                System.out.println("current year created is: " +chosenMovie.getYearCreated());
-                                System.out.println("Enter new year created of the movie: ");
-                                chosenMovie.setYearCreated(sc.nextInt());
-                            }
-                            case "is in color" ->{
-                                System.out.println("current is in color is: " + chosenMovie.isInColor());
-                                if (chosenMovie.isInColor()){
-                                    chosenMovie.setInColor(false);
-                                } else {
-                                    chosenMovie.setInColor(true);
-                                }
-                                System.out.println("current is in color has been set to: " + chosenMovie.isInColor());
-                            }
-                            case "length" -> {
-                                System.out.println("current length in minutes is: " +chosenMovie.getLengthInMinutes());
-                                System.out.println("Enter new length in minutes of the movie: ");
-                                chosenMovie.setLengthInMinutes(sc.nextInt());
-                            }
-                            case "genre" -> {
-                                System.out.println("current genre is: " + chosenMovie.getGenre());
-                                System.out.println("Enter new genre of the movie: ");
-                                chosenMovie.setGenre(sc.nextLine());
+                        pickPartToEdit(chosenMovie);
+                        while (true){
+                            System.out.println("Do you wish to edit another part of the movie yes/no?");
+                            if (sc.nextLine().equalsIgnoreCase("yes")){
+                                pickPartToEdit(chosenMovie);
+                            } else {
+                                break;
                             }
                         }
                     }
                     //if only one movie exist ask user what they wish to change.
                     else {
                         Movie chosenMovie = moreThanOneMovie.getFirst();
-                        System.out.println("Do you wish to edit the title, director, year created, is in color, length or genre?");
-                        String partToEdit = sc.nextLine();
-                        switch (partToEdit){
-                            case "title"-> {
-                                System.out.println("current title is: " + chosenMovie.getTitle());
-                                System.out.println("Enter new title of the movie: ");
-                                chosenMovie.setTitle(sc.nextLine());
-                            }
-                            case "director"->{
-                                System.out.println("current director is: " +chosenMovie.getDirector());
-                                System.out.println("Enter new director of the movie: ");
-                                chosenMovie.setDirector(sc.nextLine());
-                            }
-                            case "year created" ->{
-                                System.out.println("current year created is: " + chosenMovie.getYearCreated());
-                                System.out.println("Enter new year created of the movie: ");
-//                                Scanner sc1 = new Scanner(System.in);
-//                                int y = sc.nextInt();
-                                chosenMovie.setYearCreated(sc.nextInt());
-                            }
-                            case "is in color" ->{
-                                System.out.println("current is in color is: " + chosenMovie.isInColor());
-                                if (chosenMovie.isInColor()){
-                                    chosenMovie.setInColor(false);
-                                } else {
-                                    chosenMovie.setInColor(true);
-                                }
-                                System.out.println("current is in color has been set to: " + chosenMovie.isInColor());
-                            }
-                            case "length" -> {
-                                System.out.println("current length in minutes is: " +chosenMovie.getLengthInMinutes());
-                                System.out.println("Enter new length in minutes of the movie: ");
-                                chosenMovie.setLengthInMinutes(sc.nextInt());
-                            }
-                            case "genre" -> {
-                                System.out.println("current genre is: " + chosenMovie.getGenre());
-                                System.out.println("Enter new genre of the movie: ");
-                                chosenMovie.setGenre(sc.nextLine());
+                        pickPartToEdit(chosenMovie);
+                        while (true){
+                            System.out.println("Do you wish to edit another part of the movie yes/no?");
+                            if (sc.nextLine().equalsIgnoreCase("yes")){
+                                pickPartToEdit(chosenMovie);
+                            } else {
+                                break;
                             }
                         }
                     }
-//                    System.out.println(cont.editMovie(sc.next()));
                 }
 
                 case "5", "exit" -> {
@@ -161,8 +110,63 @@ public class UserInterface {
                     return;
                 }
             }
-            sc.nextLine();
         }
+    }
+
+    private void pickPartToEdit(Movie chosenMovie) {
+        System.out.println("Do you wish to edit the title, director, year created, is in color, length or genre?");
+        String partToEdit = sc.nextLine();
+        switch (partToEdit){
+            case "title"-> {
+                System.out.println("current title is: " + chosenMovie.getTitle());
+                System.out.println("Enter new title of the movie: ");
+                chosenMovie.setTitle(sc.nextLine());
+            }
+            case "director"->{
+                System.out.println("current director is: " +chosenMovie.getDirector());
+                System.out.println("Enter new director of the movie: ");
+                chosenMovie.setDirector(sc.nextLine());
+            }
+            case "year created" ->{
+                System.out.println("current year created is: " + chosenMovie.getYearCreated());
+                System.out.println("Enter new year created of the movie: ");
+                chosenMovie.setYearCreated(validIntCheck(sc.hasNextInt(), partToEdit));
+                sc.nextLine();
+            }
+            case "is in color" ->{
+                System.out.println("current is in color is: " + chosenMovie.isInColor());
+                if (chosenMovie.isInColor()){
+                    chosenMovie.setInColor(false);
+                } else {
+                    chosenMovie.setInColor(true);
+                }
+                System.out.println("current is in color has been set to: " + chosenMovie.isInColor());
+            }
+            case "length" -> {
+                System.out.println("current length in minutes is: " +chosenMovie.getLengthInMinutes());
+                System.out.println("Enter new length in minutes of the movie: ");
+                chosenMovie.setLengthInMinutes(validIntCheck(sc.hasNextInt(), partToEdit));
+                sc.nextLine();
+            }
+            case "genre" -> {
+                System.out.println("current genre is: " + chosenMovie.getGenre());
+                System.out.println("Enter new genre of the movie: ");
+                chosenMovie.setGenre(sc.nextLine());
+            }
+        }
+    }
+
+    public int validIntCheck(boolean isInteger, String input){
+        while (!isInteger) {
+            sc.nextLine();
+            System.out.println("Invalid " + input + ". Please enter a valid " + input +".");
+            if (sc.hasNextInt()){
+                isInteger = true;
+            } else {
+                sc.next();
+            }
+        }
+        return sc.nextInt();
     }
 
 
@@ -170,27 +174,13 @@ public class UserInterface {
         System.out.println("Please input: Title, director, year created, is in color, length in minutes and genre\n");
 
         System.out.print("Title: ");
-        String movieTitle = sc.nextLine();
+        String movieTitle = checkValidString(sc.nextLine());
 
         System.out.print("Director: ");
-        String movieDirector = sc.nextLine();
+        String movieDirector = checkValidString(sc.nextLine());
 
-
-        int yearCreated = 0;
-        while (true) {
-            System.out.print("Year created: ");
-            if (sc.hasNextInt()) {
-                yearCreated = sc.nextInt();
-                if (yearCreated > 0) {
-                    break;
-                } else {
-                    System.out.println("Invalid input. Year must be a positive number.");
-                }
-            } else {
-                System.out.println("Invalid input. Please enter a valid year.");
-                sc.nextLine();
-            }
-        }
+        System.out.println("Year created: ");
+        int yearCreated = validIntCheck(sc.hasNextInt(), "Year created");
 
         System.out.print("Is the movie in color (yes/no): ");
         boolean inColor = false;
@@ -207,27 +197,22 @@ public class UserInterface {
             }
         }
 
-        int lengthInMinutes = 0;
-        while (true) {
-            System.out.print("Length in minutes: ");
-            if (sc.hasNextInt()) {
-                lengthInMinutes = sc.nextInt();
-                if (lengthInMinutes > 0) {
-                    break;
-                } else {
-                    System.out.println("Invalid input. Length must be a positive number.");
-                }
+        System.out.println("Length in minutes: ");
+        int lengthInMinutes = validIntCheck(sc.hasNextInt(), "Length in minutes");
 
-            } else {
-                System.out.println("Invalid input. Please enter a valid length.");
-                sc.nextLine();
-            }
-        }
-
+        sc.nextLine();
         System.out.print("Genre: ");
-        String genre = sc.nextLine();
+        String genre = checkValidString(sc.nextLine());
 
         cont.addMovie(movieTitle, movieDirector, yearCreated, inColor, lengthInMinutes, genre);
+    }
+
+    private String checkValidString(String input){
+        while(input.isEmpty()){
+            System.out.println("Please enter a non-empty string value");
+            input = sc.nextLine();
+        }
+        return input;
     }
 }
 
