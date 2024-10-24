@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class MovieCollection {
 
@@ -32,5 +33,35 @@ public class MovieCollection {
         } else {
             return "Movie not found.";
         }
+    }
+
+    public String editMovie(String input){
+        ArrayList<Movie> moreThanOneMovie = new ArrayList<>();
+        moreThanOneMovie = findMovieObject(input, moreThanOneMovie);
+        if (moreThanOneMovie.isEmpty()){
+            return "No such movie exists on the list.";
+        }
+
+        //if more than one movie was found, prints a list of the movies found.
+        if (moreThanOneMovie.size() > 1){
+            String s = "";
+            for (Movie movie : moreThanOneMovie){
+                s += movie.getTitle() + "\n";
+            }
+            return "More than one movie was found: \n"+s;
+        }
+
+
+
+        return "";
+    }
+
+    public ArrayList<Movie> findMovieObject(String input, ArrayList<Movie> moreThanOneMovie){
+        for (Movie movie : listOfMovies){
+            if (movie.getTitle().toLowerCase().startsWith(input.toLowerCase())){
+                moreThanOneMovie.add(movie);
+            }
+        }
+        return moreThanOneMovie;
     }
 }
