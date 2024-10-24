@@ -8,8 +8,8 @@ public class MovieCollection {
         listOfMovies = new ArrayList<>();
     }
 
-    public void addMovie (String titel, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
-        listOfMovies.add(new Movie(titel, director, yearCreated, isInColor, lengthInMinutes, genre));
+    public void addMovie (String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
+        listOfMovies.add(new Movie(title, director, yearCreated, isInColor, lengthInMinutes, genre));
     }
 
     public String showMovies () {
@@ -23,7 +23,7 @@ public class MovieCollection {
     public String findMovie (String input) {
         String s ="";
         for (Movie movie : listOfMovies) {
-            if (movie.getTitel().toLowerCase().startsWith(input.toLowerCase())){
+            if (movie.getTitle().toLowerCase().startsWith(input.toLowerCase())){
                 s += movie +"\n";
             }
         }

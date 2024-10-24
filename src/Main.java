@@ -25,12 +25,32 @@ public class Main {
             switch (input) {
                 case "1", "create", "create movie" -> {
                     System.out.println("Please input: Title, director, year created, is in color, length in minutes and genre\n");
+
                     System.out.print("Title: ");
-                    String movieTitel = sc.next();
-                    System.out.print("Director name: ");
+                    String movieTitle = sc.next();
+
+                    System.out.print("Director: ");
                     String movieDirector = sc.next();
-                    System.out.print("Year created: ");
-                    int yearCreated = sc.nextInt();
+
+
+                    int yearCreated = 0;
+                    while (true) {
+                        System.out.print("Year created: ");
+                        if (sc.hasNextInt()) {
+                            yearCreated = sc.nextInt();
+                            if (yearCreated > 0) {
+                                break;
+                            } else {
+                                System.out.println("Invalid input. Year must be a positive number.");
+                            }
+
+                        } else {
+                            System.out.println("Invalid input. Please enter a valid year.");
+                            sc.next();
+                        }
+                    }
+
+
                     System.out.print("Is the movie in color (yes/no): ");
                     boolean inColor = false;
                     boolean validInput = false;
@@ -46,17 +66,34 @@ public class Main {
                             System.out.println("Invalid input, please write 'yes' or 'no'");
                         }
                     }
-                    System.out.print("Length in minutes: ");
-                    int lengthInMinutes = sc.nextInt();
+
+                    int lengthInMinutes = 0;
+                    while (true) {
+                        System.out.print("Length in minutes: ");
+                        if (sc.hasNextInt()) {
+                            lengthInMinutes = sc.nextInt();
+                            if (lengthInMinutes > 0) {
+                                break;
+                            } else {
+                                System.out.println("Invalid input. Length must be a positive number.");
+                            }
+
+                        } else {
+                            System.out.println("Invalid input. Please enter a valid length.");
+                            sc.next();
+                        }
+                    }
+
                     System.out.print("Genre: ");
                     String genre = sc.next();
 
-                    cont.addMovie(movieTitel, movieDirector, yearCreated, inColor, lengthInMinutes, genre);
+                    cont.addMovie(movieTitle, movieDirector, yearCreated, inColor, lengthInMinutes, genre);
+
                 }
                 case "2", "show", "show movies" -> System.out.println(cont.showMovies());
 
                 case "3", "search", "search movie" -> {
-                    System.out.println("Enter the titel of the movie, you wish to find: ");
+                    System.out.println("Enter the title of the movie, you wish to find: ");
                     System.out.println(cont.findMovie(sc.next()));
                 }
 
@@ -68,3 +105,4 @@ public class Main {
         }
     }
 }
+
