@@ -21,6 +21,6 @@ public class Controller {
     }
 
     public ArrayList<Movie> findMovieObject(String input, ArrayList<Movie> moreThanOneMovie){
-        return movieCollection.findMovieObject(input, moreThanOneMovie);
+        return movieCollection.findMovieObject(input);
     }
 }

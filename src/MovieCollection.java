@@ -37,7 +37,7 @@ public class MovieCollection {
 
     public String editMovie(String input){
         ArrayList<Movie> moreThanOneMovie = new ArrayList<>();
-        moreThanOneMovie = findMovieObject(input, moreThanOneMovie);
+        moreThanOneMovie = findMovieObject(input);
         if (moreThanOneMovie.isEmpty()){
             return "No such movie exists on the list.";
         }
@@ -56,12 +56,17 @@ public class MovieCollection {
         return "";
     }
 
-    public ArrayList<Movie> findMovieObject(String input, ArrayList<Movie> moreThanOneMovie){
+    public ArrayList<Movie> findMovieObject(String input){
+        ArrayList<Movie> matchedMovies = new ArrayList<>();
         for (Movie movie : listOfMovies){
             if (movie.getTitle().toLowerCase().startsWith(input.toLowerCase())){
-                moreThanOneMovie.add(movie);
+                matchedMovies.add(movie);
             }
         }
-        return moreThanOneMovie;
+        return matchedMovies;
+    }
+
+    public ArrayList<Movie> getListOfMovies() {
+        return listOfMovies;
     }
 }
