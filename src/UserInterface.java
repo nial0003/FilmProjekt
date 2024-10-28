@@ -6,7 +6,7 @@ public class UserInterface {
     Scanner sc = new Scanner(System.in);
     public void startProgram(){
 
-//Velkomstbesked-art
+//welcome-message string art
         String art = """
 █ ▀ █                                                                       █ ▀ █
 █ ▄ █                                                                       █ ▄ █
@@ -34,7 +34,7 @@ public class UserInterface {
         cont.addMovie("Casablanca", "Michael Curtiz", 1942, false, 102, "Romance/Drama");
         cont.addMovie("Skyfall", "Sam Mendes", 2012, true, 143, "Action");
 
-//Print af art i start
+//print of string art
         System.out.println(art);
 
         while (true) {
