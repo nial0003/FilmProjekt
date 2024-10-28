@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -26,7 +27,7 @@ public class UserInterface {
                     5. Exit
                     """);
             String input = sc.nextLine();
-            switch (input) {
+            switch (input.toLowerCase()) {
                 case "1", "create", "create movie" -> {
                     createMovieCase();
                     while (true){
@@ -116,7 +117,7 @@ public class UserInterface {
     private void pickPartToEdit(Movie chosenMovie) {
         System.out.println("Do you wish to edit the title, director, year created, is in color, length or genre?");
         String partToEdit = sc.nextLine();
-        switch (partToEdit){
+        switch (partToEdit.toLowerCase()){
             case "title"-> {
                 System.out.println("current title is: " + chosenMovie.getTitle());
                 System.out.println("Enter new title of the movie: ");
@@ -143,7 +144,7 @@ public class UserInterface {
                 System.out.println("current is in color has been set to: " + chosenMovie.isInColor());
             }
             case "length" -> {
-                System.out.println("current length in minutes is: " +chosenMovie.getLengthInMinutes());
+                System.out.println("current length in minutes is: " + chosenMovie.getLengthInMinutes());
                 System.out.println("Enter new length in minutes of the movie: ");
                 chosenMovie.setLengthInMinutes(validIntCheck(sc.hasNextInt(), partToEdit));
                 sc.nextLine();
@@ -181,6 +182,7 @@ public class UserInterface {
 
         System.out.println("Year created: ");
         int yearCreated = validIntCheck(sc.hasNextInt(), "Year created");
+        sc.nextLine();
 
         System.out.print("Is the movie in color (yes/no): ");
         boolean inColor = false;
