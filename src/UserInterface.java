@@ -6,6 +6,25 @@ public class UserInterface {
     Scanner sc = new Scanner(System.in);
     public void startProgram(){
 
+//Velkomstbesked-art
+        String art = """
+█ ▀ █                                                                       █ ▀ █
+█ ▄ █                                                                       █ ▄ █
+█ ▀ █                                                                       █ ▀ █
+█ ▄ █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█ ▄ █
+█ ▀ █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█ ▀ █
+█ ▄ █  ▄▀                             ▄                                     █ ▄ █
+█ ▀ █ ▀                               ██▄                                   █ ▀ █
+█ ▄ █                                 ████▄                                 █ ▄ █
+█ ▀ █                                 ███▀                                  █ ▀ █
+█ ▄ █                                 █▀                               ▄▀   █ ▄ █
+█ ▀ █                                                                 ▀     █ ▀ █
+█ ▄ █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█ ▄ █
+█ ▀ █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█ ▀ █
+█ ▄ █                   WELCOME TO YOUR MOVIE COLLECTION                    █ ▄ █
+▀ ▀ ▀                                                                       ▀ ▀ ▀
+        """;
+
 //        Controller cont = new Controller();
 //        Scanner sc = new Scanner(System.in);
         cont.addMovie("Inception", "Christopher Nolan", 2010, true, 148, "Science Fiction");
@@ -15,7 +34,8 @@ public class UserInterface {
         cont.addMovie("Casablanca", "Michael Curtiz", 1942, false, 102, "Romance/Drama");
         cont.addMovie("Skyfall", "Sam Mendes", 2012, true, 143, "Action");
 
-        System.out.println("!---------- Welcome to your movie collection!----------!");
+//Print af art i start
+        System.out.println(art);
 
         while (true) {
             System.out.println("""
