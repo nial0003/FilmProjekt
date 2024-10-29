@@ -163,7 +163,11 @@ public class UserInterface {
             System.out.print("What would you like to edit (title, director, year created, is in color, length, genre)? ");
             String partToEdit = sc.nextLine();
 
-            System.out.print("Enter the new value for " + partToEdit + ": ");
+            if (partToEdit.equalsIgnoreCase("color") || partToEdit.equalsIgnoreCase("is in color")){
+                System.out.print("Enter the new value for " + partToEdit + " yes/no: ");
+            } else {
+                System.out.print("Enter the new value for " + partToEdit + ": ");
+            }
             String newValue = sc.nextLine();
 
             // Call editProperty and print the result message
