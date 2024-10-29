@@ -77,4 +77,47 @@ public class Movie {
         return String.format("%s \n\tDirector: %s \n\tYear created: %d \n\tIn color: %s \n\tLength in minutes: %d \n\tGenre: %s \n"
                 ,title, director, yearCreated, s, lengthInMinutes, genre);
     }
+
+    public String editProperty(String partToEdit, String newValue) {
+        switch (partToEdit.toLowerCase()) {
+            case "title" -> {
+                setTitle(newValue);
+                return "Title has been changed to " + newValue;
+            }
+            case "director" -> {
+                setDirector(newValue);
+                return "Director has been changed to " + newValue;
+            }
+            case "year", "year created" -> {
+                try {
+                    int year = Integer.parseInt(newValue);
+                    setYearCreated(year);
+                    return "Year created has been changed to " + newValue;
+                } catch (NumberFormatException e) {
+                    return "Invalid year format. Please enter a valid integer.";
+                }
+            }
+            case "color", "is in color" -> {
+                boolean inColor = newValue.equalsIgnoreCase("yes");
+                setInColor(inColor);
+                return "Is in color has been changed to " + (inColor ? "yes" : "no");
+            }
+            case "length", "length in minutes" -> {
+                try {
+                    int length = Integer.parseInt(newValue);
+                    setLengthInMinutes(length);
+                    return "Length in minutes has been changed to " + newValue;
+                } catch (NumberFormatException e) {
+                    return "Invalid length format. Please enter a valid integer.";
+                }
+            }
+            case "genre" -> {
+                setGenre(newValue);
+                return "Genre has been changed to " + newValue;
+            }
+            default -> {
+                return "No such part exist to edit.";
+            }
+        }
+    }
 }

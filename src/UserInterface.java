@@ -53,8 +53,10 @@ public class UserInterface {
                     //Does the movie exist. If not print "movie does not exist"
                     ArrayList<Movie> moreThanOneMovie = new ArrayList<>();
                     moreThanOneMovie = cont.findMovieObject(sc.nextLine(), moreThanOneMovie);
+
                     if (moreThanOneMovie.isEmpty()) {
                         System.out.println("no such movie exist on our list of movies.");
+                        continue;
                     }
 
                     //is there more than one movie. If there is ask user to pick one of the movies
@@ -82,28 +84,12 @@ public class UserInterface {
                         }
 
                         Movie chosenMovie = moreThanOneMovie.get(userChoice);
-                        pickPartToEdit(chosenMovie);
-                        while (true) {
-                            System.out.println("Do you wish to edit another part of the movie yes/no?");
-                            if (sc.nextLine().equalsIgnoreCase("yes")) {
-                                pickPartToEdit(chosenMovie);
-                            } else {
-                                break;
-                            }
-                        }
+                        editMovieProperties(chosenMovie);
                     }
                     //if only one movie exist ask user what they wish to change.
                     else {
                         Movie chosenMovie = moreThanOneMovie.getFirst();
-                        pickPartToEdit(chosenMovie);
-                        while (true) {
-                            System.out.println("Do you wish to edit another part of the movie yes/no?");
-                            if (sc.nextLine().equalsIgnoreCase("yes")) {
-                                pickPartToEdit(chosenMovie);
-                            } else {
-                                break;
-                            }
-                        }
+                        editMovieProperties(chosenMovie);
                     }
                 }
 
@@ -111,49 +97,6 @@ public class UserInterface {
                     System.out.println("Exiting your movie collection.");
                     return;
                 }
-            }
-        }
-    }
-
-    private void pickPartToEdit(Movie chosenMovie) {
-        System.out.println("Do you wish to edit the title, director, year created, is in color, length or genre?");
-        String partToEdit = sc.nextLine();
-        switch (partToEdit.toLowerCase()) {
-            case "title" -> {
-                System.out.println("current title is: " + chosenMovie.getTitle());
-                System.out.println("Enter new title of the movie: ");
-                chosenMovie.setTitle(sc.nextLine());
-            }
-            case "director" -> {
-                System.out.println("current director is: " + chosenMovie.getDirector());
-                System.out.println("Enter new director of the movie: ");
-                chosenMovie.setDirector(sc.nextLine());
-            }
-            case "year created" -> {
-                System.out.println("current year created is: " + chosenMovie.getYearCreated());
-                System.out.println("Enter new year created of the movie: ");
-                chosenMovie.setYearCreated(validIntCheck(sc.hasNextInt(), partToEdit));
-                sc.nextLine();
-            }
-            case "is in color" -> {
-                System.out.println("current is in color is: " + chosenMovie.isInColor());
-                if (chosenMovie.isInColor()) {
-                    chosenMovie.setInColor(false);
-                } else {
-                    chosenMovie.setInColor(true);
-                }
-                System.out.println("current is in color has been set to: " + chosenMovie.isInColor());
-            }
-            case "length" -> {
-                System.out.println("current length in minutes is: " + chosenMovie.getLengthInMinutes());
-                System.out.println("Enter new length in minutes of the movie: ");
-                chosenMovie.setLengthInMinutes(validIntCheck(sc.hasNextInt(), partToEdit));
-                sc.nextLine();
-            }
-            case "genre" -> {
-                System.out.println("current genre is: " + chosenMovie.getGenre());
-                System.out.println("Enter new genre of the movie: ");
-                chosenMovie.setGenre(sc.nextLine());
             }
         }
     }
@@ -216,6 +159,23 @@ public class UserInterface {
             input = sc.nextLine();
         }
         return input;
+    }
+
+    private void editMovieProperties(Movie movie) {
+        while (true) {
+            System.out.print("What would you like to edit (title, director, year created, is in color, length, genre)? ");
+            String partToEdit = sc.nextLine();
+
+            System.out.print("Enter the new value for " + partToEdit + ": ");
+            String newValue = sc.nextLine();
+
+            // Call editProperty and print the result message
+            String resultMessage = cont.editProperty(partToEdit, newValue, movie);
+            System.out.println(resultMessage);
+
+            System.out.print("Do you wish to edit another property? (yes/no): ");
+            if (!sc.nextLine().equalsIgnoreCase("yes")) break;
+        }
     }
 }
 
