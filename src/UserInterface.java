@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -44,7 +45,8 @@ public class UserInterface {
                     2. Show movies
                     3. Search movie
                     4. Edit movie
-                    5. Exit
+                    5. Remove movie
+                    6. Exit
                     """);
             String input = sc.nextLine();
             switch (input.toLowerCase()) {
@@ -71,7 +73,7 @@ public class UserInterface {
                     System.out.println("Enter the title of the movie you wish to edit: ");
                     //Does the movie exist. If not print "movie does not exist"
                     ArrayList<Movie> moreThanOneMovie = new ArrayList<>();
-                    moreThanOneMovie = cont.findMovieObject(sc.nextLine(), moreThanOneMovie);
+                    moreThanOneMovie = cont.findMovieObject(sc.nextLine());
 
                     if (moreThanOneMovie.isEmpty()) {
                         System.out.println("no such movie exist on our list of movies.");
@@ -112,7 +114,52 @@ public class UserInterface {
                     }
                 }
 
-                case "5", "exit" -> {
+                case "5", "remove", "remove movie" ->{
+                    System.out.println("Please pick a movie to remove.");
+                    ArrayList<Movie> moreThanOneMovie = new ArrayList<>();
+                    moreThanOneMovie = cont.findMovieObject(sc.nextLine());
+
+                    if (moreThanOneMovie.isEmpty()) {
+                        System.out.println("no such movie exist on our list of movies.");
+                        continue;
+                    }
+
+                    if (moreThanOneMovie.size() > 1) {
+                        int x = 1;
+                        for (Movie movie : moreThanOneMovie) {
+                            System.out.println(x + ") " + movie.getTitle());
+                            x++;
+                        }
+                        System.out.println("Please enter the number of the movie you wish to remove: ");
+                        int userChoice = sc.nextInt() - 1;
+                        sc.nextLine();
+
+                        //If userchoice is more than the size of the list of movies or less than 0
+                        //Continues to prompt the user for a valid number.
+                        while (userChoice > moreThanOneMovie.size() || userChoice < 0) {
+                            System.out.println("Entered number is not on the list of movies!");
+                            x = 1;
+                            for (Movie movie : moreThanOneMovie) {
+                                System.out.println(x + ") " + movie.getTitle());
+                            }
+                            System.out.println("Please enter the number of the movie you wish to remove: ");
+                            userChoice = sc.nextInt() - 1;
+                            sc.nextLine();
+                        }
+
+                        Movie chosenMovie = moreThanOneMovie.get(userChoice);
+                        System.out.println(cont.removeMovie(chosenMovie));
+                        System.out.println(cont.showMovies());
+                    }
+                    //if only one movie exist ask user what they wish to remove.
+                    else {
+                        Movie chosenMovie = moreThanOneMovie.getFirst();
+                        System.out.println(cont.removeMovie(chosenMovie));
+                        System.out.println(cont.showMovies());
+                    }
+                }
+
+                case "6", "exit" -> {
                     System.out.println("Exiting your movie collection.");
                     return;
                 }
@@ -144,7 +191,14 @@ public class UserInterface {
         String movieDirector = checkValidString(sc.nextLine());
 
         System.out.println("Year created: ");
-        int yearCreated = validIntCheck(sc.hasNextInt(), "Year created");
+        int yearCreated;
+        try{
+            yearCreated = sc.nextInt();
+        }
+        catch (InputMismatchException e){
+            boolean isInteger = false;
+            yearCreated = validIntCheck(isInteger, "Year created");
+        }
         sc.nextLine();
 
         System.out.print("Is the movie in color (yes/no): ");
@@ -163,7 +217,14 @@ public class UserInterface {
         }
 
         System.out.println("Length in minutes: ");
-        int lengthInMinutes = validIntCheck(sc.hasNextInt(), "Length in minutes");
+        int lengthInMinutes;
+        try{
+            lengthInMinutes = sc.nextInt();
+        }
+        catch (InputMismatchException e){
+            boolean isInteger = false;
+            lengthInMinutes = validIntCheck(isInteger, "Year created");
+        }
 
         sc.nextLine();
         System.out.print("Genre: ");

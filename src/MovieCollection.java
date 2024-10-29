@@ -44,4 +44,10 @@ public class MovieCollection {
         }
         return matchedMovies;
     }
+
+    public String removeMovie(Movie movieToBeRemoved){
+        String titleOfRemovedMovie = movieToBeRemoved.getTitle();
+        listOfMovies.remove(movieToBeRemoved);
+        return titleOfRemovedMovie + " has been removed from our list of movies!";
+    }
 }

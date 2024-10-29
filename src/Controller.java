@@ -17,11 +17,15 @@ public class Controller {
         return movieCollection.findMovie(input);
     }
 
-    public ArrayList<Movie> findMovieObject(String input, ArrayList<Movie> moreThanOneMovie){
+    public ArrayList<Movie> findMovieObject(String input){
         return movieCollection.findMovieObject(input);
     }
 
     public String editProperty(String partToEdit, String newValue, Movie movie){
         return movie.editProperty(partToEdit, newValue);
+    }
+
+    public String removeMovie(Movie movieToBeRemoved){
+        return movieCollection.removeMovie(movieToBeRemoved);
     }
 }
