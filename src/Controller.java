@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Controller {
 
-    MovieCollection movieCollection = new MovieCollection();
+    private MovieCollection movieCollection = new MovieCollection();
     Movie movie;
 
     public void addMovie (String titel, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {

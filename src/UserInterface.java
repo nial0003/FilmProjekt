@@ -3,7 +3,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class UserInterface {
-    Controller cont = new Controller();
+    private Controller cont = new Controller();
     Scanner sc = new Scanner(System.in);
 
     public void startProgram() {
@@ -212,7 +212,7 @@ public class UserInterface {
                 inColor = true;
                 validInput = true;
             } else {
-                System.out.println("Invalid input, please write 'yes' or 'no'");
+                System.out.print("Invalid input, please write 'yes' or 'no'");
             }
         }
 
