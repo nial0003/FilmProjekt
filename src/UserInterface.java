@@ -7,6 +7,27 @@ public class UserInterface {
 
     public void startProgram() {
 
+//welcome-message string art
+        String art = """
+█ ▀ █                                                                       █ ▀ █
+█ ▄ █                                                                       █ ▄ █
+█ ▀ █                                                                       █ ▀ █
+█ ▄ █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█ ▄ █
+█ ▀ █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█ ▀ █
+█ ▄ █  ▄▀                             ▄                                     █ ▄ █
+█ ▀ █ ▀                               ██▄                                   █ ▀ █
+█ ▄ █                                 ████▄                                 █ ▄ █
+█ ▀ █                                 ███▀                                  █ ▀ █
+█ ▄ █                                 █▀                               ▄▀   █ ▄ █
+█ ▀ █                                                                 ▀     █ ▀ █
+█ ▄ █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█ ▄ █
+█ ▀ █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█ ▀ █
+█ ▄ █                   WELCOME TO YOUR MOVIE COLLECTION                    █ ▄ █
+▀ ▀ ▀                                                                       ▀ ▀ ▀
+        """;
+
+//        Controller cont = new Controller();
+//        Scanner sc = new Scanner(System.in);
         cont.addMovie("Inception", "Christopher Nolan", 2010, true, 148, "Science Fiction");
         cont.addMovie("The Godfather", "Francis Ford Coppola", 1972, true, 175, "Crime/Drama");
         cont.addMovie("Pulp Fiction", "Quentin Tarantino", 1994, true, 154, "Crime");
@@ -14,7 +35,8 @@ public class UserInterface {
         cont.addMovie("Casablanca", "Michael Curtiz", 1942, false, 102, "Romance/Drama");
         cont.addMovie("Skyfall", "Sam Mendes", 2012, true, 143, "Action");
 
-        System.out.println("!---------- Welcome to your movie collection!----------!");
+//print of string art
+        System.out.println(art);
 
         while (true) {
             System.out.println("""
