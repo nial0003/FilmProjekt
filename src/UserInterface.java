@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class UserInterface {
     Controller cont = new Controller();
     Scanner sc = new Scanner(System.in);
-    public void startProgram(){
+
+    public void startProgram() {
 
 //        Controller cont = new Controller();
 //        Scanner sc = new Scanner(System.in);
@@ -30,9 +31,9 @@ public class UserInterface {
             switch (input.toLowerCase()) {
                 case "1", "create", "create movie" -> {
                     createMovieCase();
-                    while (true){
+                    while (true) {
                         System.out.println("Do you wish to creat another movie yes/no?");
-                        if (sc.nextLine().equalsIgnoreCase("yes")){
+                        if (sc.nextLine().equalsIgnoreCase("yes")) {
                             createMovieCase();
                         } else {
                             break;
@@ -52,14 +53,14 @@ public class UserInterface {
                     //Does the movie exist. If not print "movie does not exist"
                     ArrayList<Movie> moreThanOneMovie = new ArrayList<>();
                     moreThanOneMovie = cont.findMovieObject(sc.nextLine(), moreThanOneMovie);
-                    if (moreThanOneMovie.isEmpty()){
+                    if (moreThanOneMovie.isEmpty()) {
                         System.out.println("no such movie exist on our list of movies.");
                     }
 
                     //is there more than one movie. If there is ask user to pick one of the movies
-                    if (moreThanOneMovie.size() > 1){
+                    if (moreThanOneMovie.size() > 1) {
                         int x = 1;
-                        for (Movie movie : moreThanOneMovie){
+                        for (Movie movie : moreThanOneMovie) {
                             System.out.println(x + ") " + movie.getTitle());
                             x++;
                         }
@@ -69,10 +70,10 @@ public class UserInterface {
 
                         //If userchoice is more than the size of the list of movies or less than 0
                         //Continues to prompt the user for a valid number.
-                        while (userChoice>moreThanOneMovie.size() || userChoice < 0) {
+                        while (userChoice > moreThanOneMovie.size() || userChoice < 0) {
                             System.out.println("Entered number is not on the list of movies!");
                             x = 1;
-                            for (Movie movie : moreThanOneMovie){
+                            for (Movie movie : moreThanOneMovie) {
                                 System.out.println(x + ") " + movie.getTitle());
                             }
                             System.out.println("Please enter the number of the movie you wish to edit: ");
@@ -82,9 +83,9 @@ public class UserInterface {
 
                         Movie chosenMovie = moreThanOneMovie.get(userChoice);
                         pickPartToEdit(chosenMovie);
-                        while (true){
+                        while (true) {
                             System.out.println("Do you wish to edit another part of the movie yes/no?");
-                            if (sc.nextLine().equalsIgnoreCase("yes")){
+                            if (sc.nextLine().equalsIgnoreCase("yes")) {
                                 pickPartToEdit(chosenMovie);
                             } else {
                                 break;
@@ -95,9 +96,9 @@ public class UserInterface {
                     else {
                         Movie chosenMovie = moreThanOneMovie.getFirst();
                         pickPartToEdit(chosenMovie);
-                        while (true){
+                        while (true) {
                             System.out.println("Do you wish to edit another part of the movie yes/no?");
-                            if (sc.nextLine().equalsIgnoreCase("yes")){
+                            if (sc.nextLine().equalsIgnoreCase("yes")) {
                                 pickPartToEdit(chosenMovie);
                             } else {
                                 break;
@@ -117,26 +118,26 @@ public class UserInterface {
     private void pickPartToEdit(Movie chosenMovie) {
         System.out.println("Do you wish to edit the title, director, year created, is in color, length or genre?");
         String partToEdit = sc.nextLine();
-        switch (partToEdit.toLowerCase()){
-            case "title"-> {
+        switch (partToEdit.toLowerCase()) {
+            case "title" -> {
                 System.out.println("current title is: " + chosenMovie.getTitle());
                 System.out.println("Enter new title of the movie: ");
                 chosenMovie.setTitle(sc.nextLine());
             }
-            case "director"->{
-                System.out.println("current director is: " +chosenMovie.getDirector());
+            case "director" -> {
+                System.out.println("current director is: " + chosenMovie.getDirector());
                 System.out.println("Enter new director of the movie: ");
                 chosenMovie.setDirector(sc.nextLine());
             }
-            case "year created" ->{
+            case "year created" -> {
                 System.out.println("current year created is: " + chosenMovie.getYearCreated());
                 System.out.println("Enter new year created of the movie: ");
                 chosenMovie.setYearCreated(validIntCheck(sc.hasNextInt(), partToEdit));
                 sc.nextLine();
             }
-            case "is in color" ->{
+            case "is in color" -> {
                 System.out.println("current is in color is: " + chosenMovie.isInColor());
-                if (chosenMovie.isInColor()){
+                if (chosenMovie.isInColor()) {
                     chosenMovie.setInColor(false);
                 } else {
                     chosenMovie.setInColor(true);
@@ -157,11 +158,11 @@ public class UserInterface {
         }
     }
 
-    public int validIntCheck(boolean isInteger, String input){
+    public int validIntCheck(boolean isInteger, String input) {
         while (!isInteger) {
             sc.nextLine();
-            System.out.println("Invalid " + input + ". Please enter a valid " + input +".");
-            if (sc.hasNextInt()){
+            System.out.println("Invalid " + input + ". Please enter a valid " + input + ".");
+            if (sc.hasNextInt()) {
                 isInteger = true;
             } else {
                 sc.next();
@@ -171,7 +172,7 @@ public class UserInterface {
     }
 
 
-    public void createMovieCase(){
+    public void createMovieCase() {
         System.out.println("Please input: Title, director, year created, is in color, length in minutes and genre\n");
 
         System.out.print("Title: ");
@@ -209,8 +210,8 @@ public class UserInterface {
         cont.addMovie(movieTitle, movieDirector, yearCreated, inColor, lengthInMinutes, genre);
     }
 
-    private String checkValidString(String input){
-        while(input.isEmpty()){
+    private String checkValidString(String input) {
+        while (input.isEmpty()) {
             System.out.println("Please enter a non-empty string value");
             input = sc.nextLine();
         }
