@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserInterface {
-    Controller cont = new Controller();
+    private Controller cont = new Controller();
     Scanner sc = new Scanner(System.in);
 
     public void startProgram() {
@@ -143,7 +143,7 @@ public class UserInterface {
         System.out.print("Director: ");
         String movieDirector = checkValidString(sc.nextLine());
 
-        System.out.println("Year created: ");
+        System.out.print("Year created: ");
         int yearCreated = validIntCheck(sc.hasNextInt(), "Year created");
         sc.nextLine();
 
@@ -158,7 +158,7 @@ public class UserInterface {
                 inColor = true;
                 validInput = true;
             } else {
-                System.out.println("Invalid input, please write 'yes' or 'no'");
+                System.out.print("Invalid input, please write 'yes' or 'no'");
             }
         }
 
