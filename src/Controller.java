@@ -17,10 +17,6 @@ public class Controller {
         return movieCollection.findMovie(input);
     }
 
-    public String editMovie(String input){
-        return movieCollection.editMovie(input);
-    }
-
     public ArrayList<Movie> findMovieObject(String input, ArrayList<Movie> moreThanOneMovie){
         return movieCollection.findMovieObject(input);
     }

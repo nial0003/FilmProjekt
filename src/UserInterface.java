@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -8,8 +7,6 @@ public class UserInterface {
 
     public void startProgram() {
 
-//        Controller cont = new Controller();
-//        Scanner sc = new Scanner(System.in);
         cont.addMovie("Inception", "Christopher Nolan", 2010, true, 148, "Science Fiction");
         cont.addMovie("The Godfather", "Francis Ford Coppola", 1972, true, 175, "Crime/Drama");
         cont.addMovie("Pulp Fiction", "Quentin Tarantino", 1994, true, 154, "Crime");
