@@ -243,7 +243,7 @@ public class UserInterface {
 
     private void editMovieProperties(Movie movie) {
         while (true) {
-            System.out.print("What would you like to edit (title, director, year created, is in color, length, genre)? ");
+            System.out.print("What would you like to edit (title, director, year created, is in color, length, genre)?");
             String partToEdit = sc.nextLine();
 
             if (partToEdit.equalsIgnoreCase("color") || partToEdit.equalsIgnoreCase("is in color")){

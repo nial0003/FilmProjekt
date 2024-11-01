@@ -1,3 +1,5 @@
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -50,4 +52,5 @@ public class MovieCollection {
         listOfMovies.remove(movieToBeRemoved);
         return titleOfRemovedMovie + " has been removed from our list of movies!";
     }
+
 }
