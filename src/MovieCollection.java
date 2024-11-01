@@ -1,7 +1,8 @@
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.Scanner;
+
 
 public class MovieCollection {
 
@@ -15,9 +16,9 @@ public class MovieCollection {
         listOfMovies.add(new Movie(title, director, yearCreated, isInColor, lengthInMinutes, genre));
     }
 
-    public String showMovies () {
+    public String showMovies (ArrayList<Movie> listOfMoviesFromFile) {
         String s = "";
-        for (Movie movie : listOfMovies){
+        for (Movie movie : listOfMoviesFromFile){
             s += movie.toString()+"\n";
         }
         return s;

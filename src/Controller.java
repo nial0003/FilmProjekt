@@ -3,14 +3,14 @@ import java.util.ArrayList;
 public class Controller {
 
     private MovieCollection movieCollection = new MovieCollection();
-    Movie movie;
+    private FileHandler fh = new FileHandler();
 
     public void addMovie (String titel, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
         movieCollection.addMovie(titel, director, yearCreated, isInColor, lengthInMinutes, genre);
     }
 
     public String showMovies(){
-        return movieCollection.showMovies();
+        return movieCollection.showMovies(fh.loadFromFile());
     }
 
     public String findMovie (String input) {
