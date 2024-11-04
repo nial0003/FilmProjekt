@@ -10,7 +10,7 @@ public class Controller {
     }
 
     public String showMovies(){
-        return movieCollection.showMovies(fh.loadFromFile());
+        return movieCollection.showMovies(movieCollection.getMovies());
     }
 
     public String findMovie (String input) {
@@ -27,5 +27,30 @@ public class Controller {
 
     public String removeMovie(Movie movieToBeRemoved){
         return movieCollection.removeMovie(movieToBeRemoved);
+    }
+
+    public void saveMovies() {
+        ArrayList<Movie> currentMovies = fh.loadFromFile(); // Load existing movies from the file
+        ArrayList<Movie> newMovies = movieCollection.getMovies(); // Get movies from the current session
+        // Merge the new movies with current movies, avoiding duplicates
+        for (Movie movie : newMovies) {
+            if (!currentMovies.contains(movie)) {
+                currentMovies.add(movie);
+            }
+        }
+        // Save the merged list back to the file
+        fh.saveToFile(currentMovies);
+    }
+
+    public void sortMoviesByTitle() {
+        movieCollection.sortMoviesByTitle();
+    }
+
+    public void sortMoviesByYear() {
+        movieCollection.sortMoviesByYear();
+    }
+
+    public void sortMoviesByLengthInMinutes() {
+        movieCollection.sortMoviesByLengthInMinutes();
     }
 }

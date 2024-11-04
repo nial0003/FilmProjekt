@@ -1,4 +1,10 @@
-public class Movie {
+import java.io.Serial;
+import java.io.Serializable;
+
+public class Movie implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     private String title;
     private String director;
@@ -119,5 +125,9 @@ public class Movie {
                 return "No such part exist to edit.";
             }
         }
+    }
+
+    public String toCSV() {
+        return title + "," + director + "," + yearCreated + "," + isInColor + "," + lengthInMinutes + "," + genre;
     }
 }

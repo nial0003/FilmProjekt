@@ -62,7 +62,28 @@ public class UserInterface {
                     }
                 }
 
-                case "2", "show", "show movies" -> System.out.println(cont.showMovies());
+                case "2", "show", "show movies" -> {
+                    System.out.println("Please enter the number of how you wish to sort the movies: ");
+                    System.out.println("1) title a-z");
+                    System.out.println("2) year created");
+                    System.out.println("3) length");
+                    String sortOption = sc.nextLine();
+                    switch (sortOption) {
+                        case "1":
+                            cont.sortMoviesByTitle();
+                            break;
+                        case "2":
+                            cont.sortMoviesByYear();
+                            break;
+                        case "3":
+                            cont.sortMoviesByLengthInMinutes();
+                            break;
+                        default:
+                            System.out.println("Invalid option. Showing unsorted list.");
+                    }
+                    System.out.println(cont.showMovies());
+                }
+
 
                 case "3", "search", "search movie" -> {
                     System.out.println("Enter the title of the movie, you wish to find: ");
@@ -160,6 +181,7 @@ public class UserInterface {
                 }
 
                 case "6", "exit" -> {
+                    //cont.saveMovies();
                     System.out.println("Exiting your movie collection.");
                     return;
                 }

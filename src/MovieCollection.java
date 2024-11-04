@@ -1,7 +1,6 @@
-import java.io.*;
 import java.util.ArrayList;
-import java.util.Locale;
-import java.util.Scanner;
+import java.util.Collections;
+import java.util.Comparator;
 
 
 public class MovieCollection {
@@ -10,6 +9,10 @@ public class MovieCollection {
 
     MovieCollection() {
         listOfMovies = new ArrayList<>();
+    }
+
+    public ArrayList<Movie> getMovies() {
+        return listOfMovies;
     }
 
     public void addMovie (String title, String director, int yearCreated, boolean isInColor, int lengthInMinutes, String genre) {
@@ -54,4 +57,25 @@ public class MovieCollection {
         return titleOfRemovedMovie + " has been removed from our list of movies!";
     }
 
+    public ArrayList<Movie> getMovies(ArrayList<Movie> movies) {
+        return listOfMovies;
+    }
+
+    public void sortMoviesByTitle() {
+        Collections.sort(listOfMovies, Comparator.comparing(movie -> {
+            String title = movie.getTitle();
+            if (title.toLowerCase().startsWith("the ")) {
+                return title.substring(4); //skip "the" and start from the next word
+            }
+            return title;
+        }));
+    }
+
+    public void sortMoviesByYear() {
+        Collections.sort(listOfMovies, Comparator.comparingInt(Movie::getYearCreated));
+    }
+
+    public void sortMoviesByLengthInMinutes() {
+        Collections.sort(listOfMovies, Comparator.comparingInt(Movie::getLengthInMinutes));
+    }
 }
