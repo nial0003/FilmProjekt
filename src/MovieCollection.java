@@ -78,4 +78,12 @@ public class MovieCollection {
     public void sortMoviesByLengthInMinutes() {
         Collections.sort(listOfMovies, Comparator.comparingInt(Movie::getLengthInMinutes));
     }
+
+    public void clearMovieList(){
+        listOfMovies.clear();
+    }
+
+    public void setListOfMovies(ArrayList<Movie> listOfMovies) {
+        this.listOfMovies = listOfMovies;
+    }
 }

@@ -75,9 +75,9 @@ public class Movie implements Serializable {
     public String toString (){
         String s = "";
         if (isInColor){
-            s = "yes";
+            s = "Yes";
         } else {
-            s = "no";
+            s = "No";
         }
 
         return String.format("%s \n\tDirector: %s \n\tYear created: %d \n\tIn color: %s \n\tLength in minutes: %d \n\tGenre: %s \n"
@@ -127,7 +127,7 @@ public class Movie implements Serializable {
         }
     }
 
-    public String toCSV() {
-        return title + "," + director + "," + yearCreated + "," + isInColor + "," + lengthInMinutes + "," + genre;
+    public String toCSVStyle() {
+        return "\n"+title + "," + director + "," + yearCreated + "," + isInColor + "," + lengthInMinutes + "," + genre;
     }
 }

@@ -30,16 +30,9 @@ public class Controller {
     }
 
     public void saveMovies() {
-        ArrayList<Movie> currentMovies = fh.loadFromFile(); // Load existing movies from the file
         ArrayList<Movie> newMovies = movieCollection.getMovies(); // Get movies from the current session
-        // Merge the new movies with current movies, avoiding duplicates
-        for (Movie movie : newMovies) {
-            if (!currentMovies.contains(movie)) {
-                currentMovies.add(movie);
-            }
-        }
-        // Save the merged list back to the file
-        fh.saveToFile(currentMovies);
+        fh.saveToFile(newMovies);
+        movieCollection.clearMovieList();
     }
 
     public void sortMoviesByTitle() {
@@ -52,5 +45,21 @@ public class Controller {
 
     public void sortMoviesByLengthInMinutes() {
         movieCollection.sortMoviesByLengthInMinutes();
+    }
+
+    public ArrayList<Movie> loadFromFile(){
+        return fh.loadFromFile();
+    }
+
+    public void setListOfMovies(ArrayList<Movie> listOfMovies){
+        movieCollection.setListOfMovies(listOfMovies);
+    }
+
+    public void clearMovieList(){
+        movieCollection.clearMovieList();
+    }
+
+    public void deleteOldFileAndCreateNewEmptyFile(){
+        fh.deleteOldFileAndCreateNewEmptyFile();
     }
 }

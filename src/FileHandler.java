@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class FileHandler {
 
-    private final File file = new File("filmProjekt.txt");
+    private File file = new File("filmProjekt.txt");
 
 
     public ArrayList<Movie> loadFromFile() {
@@ -15,6 +15,7 @@ public class FileHandler {
         }
 
         try (Scanner sc = new Scanner(file)) {
+            sc.nextLine();
             while (sc.hasNextLine()) {
                 String line = sc.nextLine();
                 if (!line.isBlank()) {
@@ -36,12 +37,19 @@ public class FileHandler {
     }
 
     public void saveToFile(ArrayList<Movie> movies) {
-        try (PrintWriter writer = new PrintWriter(new FileWriter(file))) {
+        try (FileWriter writer = new FileWriter(file, true)) {
             for (Movie movie : movies) {
-                writer.println(movie.toCSV()); //BURDE GØRE DETTE/GØR IKKE: Converts Movie to CSV format and saves each one on a new line
+                writer.write(movie.toCSVStyle());
             }
         } catch (IOException e) {
             System.err.println("Error saving movies to file: " + e.getMessage());
+        }
+    }
+
+    //Deletes the old file and creates a new file of the same name.
+    public void deleteOldFileAndCreateNewEmptyFile(){
+        if (file.delete()) {
+            file = new File("filmProjekt.txt");
         }
     }
 }

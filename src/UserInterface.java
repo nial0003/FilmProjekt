@@ -10,31 +10,23 @@ public class UserInterface {
 
 //welcome-message string art
         String art = """
-█ ▀ █                                                                       █ ▀ █
-█ ▄ █                                                                       █ ▄ █
-█ ▀ █                                                                       █ ▀ █
-█ ▄ █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█ ▄ █
-█ ▀ █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█ ▀ █
-█ ▄ █  ▄▀                             ▄                                     █ ▄ █
-█ ▀ █ ▀                               ██▄                                   █ ▀ █
-█ ▄ █                                 ████▄                                 █ ▄ █
-█ ▀ █                                 ███▀                                  █ ▀ █
-█ ▄ █                                 █▀                               ▄▀   █ ▄ █
-█ ▀ █                                                                 ▀     █ ▀ █
-█ ▄ █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█ ▄ █
-█ ▀ █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█ ▀ █
-█ ▄ █                   WELCOME TO YOUR MOVIE COLLECTION                    █ ▄ █
-▀ ▀ ▀                                                                       ▀ ▀ ▀
-        """;
+                █ ▀ █                                                                       █ ▀ █
+                █ ▄ █                                                                       █ ▄ █
+                █ ▀ █                                                                       █ ▀ █
+                █ ▄ █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█ ▄ █
+                █ ▀ █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█ ▀ █
+                █ ▄ █  ▄▀                             ▄                                     █ ▄ █
+                █ ▀ █ ▀                               ██▄                                   █ ▀ █
+                █ ▄ █                                 ████▄                                 █ ▄ █
+                █ ▀ █                                 ███▀                                  █ ▀ █
+                █ ▄ █                                 █▀                               ▄▀   █ ▄ █
+                █ ▀ █                                                                 ▀     █ ▀ █
+                █ ▄ █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█ ▄ █
+                █ ▀ █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█ ▀ █
+                █ ▄ █                   WELCOME TO YOUR MOVIE COLLECTION                    █ ▄ █
+                ▀ ▀ ▀                                                                       ▀ ▀ ▀
+                """;
 
-//        Controller cont = new Controller();
-//        Scanner sc = new Scanner(System.in);
-        cont.addMovie("Inception", "Christopher Nolan", 2010, true, 148, "Science Fiction");
-        cont.addMovie("The Godfather", "Francis Ford Coppola", 1972, true, 175, "Crime/Drama");
-        cont.addMovie("Pulp Fiction", "Quentin Tarantino", 1994, true, 154, "Crime");
-        cont.addMovie("Schindler's List", "Steven Spielberg", 1993, true, 195, "Historical/Drama");
-        cont.addMovie("Casablanca", "Michael Curtiz", 1942, false, 102, "Romance/Drama");
-        cont.addMovie("Skyfall", "Sam Mendes", 2012, true, 143, "Action");
 
 //print of string art
         System.out.println(art);
@@ -57,31 +49,38 @@ public class UserInterface {
                         if (sc.nextLine().equalsIgnoreCase("yes")) {
                             createMovieCase();
                         } else {
+                            cont.saveMovies();
                             break;
                         }
                     }
                 }
 
                 case "2", "show", "show movies" -> {
+                    cont.setListOfMovies(cont.loadFromFile());
                     System.out.println("Please enter the number of how you wish to sort the movies: ");
                     System.out.println("1) title a-z");
                     System.out.println("2) year created");
                     System.out.println("3) length");
                     String sortOption = sc.nextLine();
                     switch (sortOption) {
-                        case "1":
+                        case "1" -> {
                             cont.sortMoviesByTitle();
-                            break;
-                        case "2":
+                            System.out.println(cont.showMovies());
+                        }
+                        case "2" -> {
                             cont.sortMoviesByYear();
-                            break;
-                        case "3":
+                            System.out.println(cont.showMovies());
+                        }
+                        case "3" -> {
                             cont.sortMoviesByLengthInMinutes();
-                            break;
-                        default:
+                            System.out.println(cont.showMovies());
+                        }
+                        default -> {
                             System.out.println("Invalid option. Showing unsorted list.");
+                            System.out.println(cont.showMovies());
+                        }
                     }
-                    System.out.println(cont.showMovies());
+                    cont.clearMovieList();
                 }
 
 
@@ -92,9 +91,12 @@ public class UserInterface {
 
                 case "4", "edit", "edit movie" -> {
                     System.out.println("Enter the title of the movie you wish to edit: ");
+                    //Loads the list of movies from the file into the arrayList in the movie collection
+                    cont.setListOfMovies(cont.loadFromFile());
+                    cont.deleteOldFileAndCreateNewEmptyFile();
+
                     //Does the movie exist. If not print "movie does not exist"
-                    ArrayList<Movie> moreThanOneMovie = new ArrayList<>();
-                    moreThanOneMovie = cont.findMovieObject(sc.nextLine());
+                    ArrayList<Movie> moreThanOneMovie = cont.findMovieObject(sc.nextLine());
 
                     if (moreThanOneMovie.isEmpty()) {
                         System.out.println("no such movie exist on our list of movies.");
@@ -133,12 +135,17 @@ public class UserInterface {
                         Movie chosenMovie = moreThanOneMovie.getFirst();
                         editMovieProperties(chosenMovie);
                     }
+
+                    //Saves the arrayList of movies with the edited movie onto the newly created file.
+                    cont.saveMovies();
                 }
 
-                case "5", "remove", "remove movie" ->{
+                case "5", "remove", "remove movie" -> {
+                    cont.setListOfMovies(cont.loadFromFile());
+                    cont.deleteOldFileAndCreateNewEmptyFile();
+
                     System.out.println("Please pick a movie to remove.");
-                    ArrayList<Movie> moreThanOneMovie = new ArrayList<>();
-                    moreThanOneMovie = cont.findMovieObject(sc.nextLine());
+                    ArrayList<Movie> moreThanOneMovie = cont.findMovieObject(sc.nextLine());
 
                     if (moreThanOneMovie.isEmpty()) {
                         System.out.println("no such movie exist on our list of movies.");
@@ -178,6 +185,8 @@ public class UserInterface {
                         System.out.println(cont.removeMovie(chosenMovie));
                         System.out.println(cont.showMovies());
                     }
+
+                    cont.saveMovies();
                 }
 
                 case "6", "exit" -> {
@@ -214,10 +223,9 @@ public class UserInterface {
 
         System.out.println("Year created: ");
         int yearCreated;
-        try{
+        try {
             yearCreated = sc.nextInt();
-        }
-        catch (InputMismatchException e){
+        } catch (InputMismatchException e) {
             boolean isInteger = false;
             yearCreated = validIntCheck(isInteger, "Year created");
         }
@@ -240,10 +248,9 @@ public class UserInterface {
 
         System.out.println("Length in minutes: ");
         int lengthInMinutes;
-        try{
+        try {
             lengthInMinutes = sc.nextInt();
-        }
-        catch (InputMismatchException e){
+        } catch (InputMismatchException e) {
             boolean isInteger = false;
             lengthInMinutes = validIntCheck(isInteger, "Year created");
         }
@@ -260,7 +267,7 @@ public class UserInterface {
             System.out.println("Please enter a non-empty string value");
             input = sc.nextLine();
         }
-        return input;
+        return input.substring(0, 1).toUpperCase() + input.substring(1);
     }
 
     private void editMovieProperties(Movie movie) {
@@ -268,7 +275,7 @@ public class UserInterface {
             System.out.print("What would you like to edit (title, director, year created, is in color, length, genre)?");
             String partToEdit = sc.nextLine();
 
-            if (partToEdit.equalsIgnoreCase("color") || partToEdit.equalsIgnoreCase("is in color")){
+            if (partToEdit.equalsIgnoreCase("color") || partToEdit.equalsIgnoreCase("is in color")) {
                 System.out.print("Enter the new value for " + partToEdit + " yes/no: ");
             } else {
                 System.out.print("Enter the new value for " + partToEdit + ": ");
