@@ -4,3 +4,13 @@ The Godfather,Francis Ford Coppola,1972,true,175,Crime/Drama
 Pulp Fiction,Quentin Tarantino,1994,true,154,Crime
 Schindler's list,Steven Spielberg,1993,false,195,Historical/Drama
 Casablanca,Michael Curtiz,1942,false,102,Romance/Drama
+The Dark Knight,Christopher Nolan,2008,true,152,Action/Crime
+The Shawshank Redemption,Frank Darabont,1994,true,142,Drama
+Fight Club,David Fincher,1999,false,139,Drama/Thriller
+Forrest Gump,Robert Zemeckis,1994,true,142,Drama/Romance
+The Matrix,Lana Wachowski & Lilly Wachowski,1999,true,136,Science Fiction
+Goodfellas,Martin Scorsese,1990,true,146,Crime/Drama
+Gladiator,Ridley Scott,2000,false,155,Historical/Drama
+Titanic,James Cameron,1997,false,195,Romance/Drama
+Jurassic Park,Steven Spielberg,1993,true,127,Science Fiction/Adventure
+Interstellar,Christopher Nolan,2014,true,169,Science Fiction

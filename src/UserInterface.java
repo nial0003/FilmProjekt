@@ -1,3 +1,5 @@
+import java.util.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -45,7 +47,7 @@ public class UserInterface {
                 case "1", "create", "create movie" -> {
                     createMovieCase();
                     while (true) {
-                        System.out.println("Do you wish to creat another movie yes/no?");
+                        System.out.println("Do you wish to create another movie yes/no?");
                         if (sc.nextLine().equalsIgnoreCase("yes")) {
                             createMovieCase();
                         } else {
@@ -57,28 +59,30 @@ public class UserInterface {
 
                 case "2", "show", "show movies" -> {
                     cont.setListOfMovies(cont.loadFromFile());
-                    System.out.println("Please enter the number of how you wish to sort the movies: ");
-                    System.out.println("1) title a-z");
-                    System.out.println("2) year created");
-                    System.out.println("3) length");
-                    String sortOption = sc.nextLine();
-                    switch (sortOption) {
-                        case "1" -> {
-                            cont.sortMoviesByTitle();
-                            System.out.println(cont.showMovies());
+                    List<Comparator<Movie>> chosenComparators = new ArrayList<>();
+
+                    boolean addMoreSorting = true;
+                    while (addMoreSorting) {
+                        System.out.println("Choose a sorting criterion:");
+                        System.out.println("1) Title A-Z");
+                        System.out.println("2) Year Created");
+                        System.out.println("3) Length in Minutes");
+
+                        String sortOption = sc.nextLine();
+                        switch (sortOption) {
+                            case "1" -> chosenComparators.add(cont.getComparatorByTitle());
+                            case "2" -> chosenComparators.add(cont.getComparatorByYear());
+                            case "3" -> chosenComparators.add(cont.getComparatorByLength());
+                            default -> System.out.println("Invalid option. Please choose a valid criterion.");
                         }
-                        case "2" -> {
-                            cont.sortMoviesByYear();
-                            System.out.println(cont.showMovies());
-                        }
-                        case "3" -> {
-                            cont.sortMoviesByLengthInMinutes();
-                            System.out.println(cont.showMovies());
-                        }
-                        default -> {
-                            System.out.println("Invalid option. Showing unsorted list.");
-                            System.out.println(cont.showMovies());
-                        }
+
+                        cont.sortMovies(chosenComparators);
+                        System.out.println("Movies sorted by chosen criteria:");
+                        System.out.println(cont.showMovies());
+
+                        System.out.println("Would you like to add another sorting criterion? (yes/no)");
+                        String response = sc.nextLine();
+                        addMoreSorting = response.equalsIgnoreCase("yes");
                     }
                     cont.clearMovieList();
                 }
@@ -90,7 +94,7 @@ public class UserInterface {
                 }
 
                 case "4", "edit", "edit movie" -> {
-                    System.out.println("Enter the title of the movie you wish to edit: ");
+                    System.out.println("Enter the title of the movie, you wish to edit: ");
                     //Loads the list of movies from the file into the arrayList in the movie collection
                     cont.setListOfMovies(cont.loadFromFile());
 
@@ -223,12 +227,20 @@ public class UserInterface {
         String movieDirector = checkValidString(sc.nextLine());
 
         System.out.println("Year created: ");
-        int yearCreated;
-        try {
-            yearCreated = sc.nextInt();
-        } catch (InputMismatchException e) {
-            boolean isInteger = false;
-            yearCreated = validIntCheck(isInteger, "Year created");
+        int yearCreated = 0;
+        int currentYear = LocalDate.now().getYear();
+        while (true) {
+            try {
+                yearCreated = sc.nextInt();
+                if (yearCreated >= 1895 && yearCreated <= currentYear) {
+                    break;
+                } else {
+                    System.out.println("Please enter a year between 1895 and " + currentYear + ".");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a numeric value for the year.");
+                sc.next();
+            }
         }
         sc.nextLine();
 
@@ -278,6 +290,22 @@ public class UserInterface {
 
             if (partToEdit.equalsIgnoreCase("color") || partToEdit.equalsIgnoreCase("is in color")) {
                 System.out.print("Enter the new value for " + partToEdit + " yes/no: ");
+            } else if (partToEdit.equalsIgnoreCase("year") || partToEdit.equalsIgnoreCase("year created")) {
+                int currentYear = LocalDate.now().getYear();
+                while (true) {
+                    System.out.print("Enter the new value for " + partToEdit);
+                    String newValue = sc.nextLine();
+                    try {
+                        int year = Integer.parseInt(newValue);
+                        if (year >= 1895 && year <= currentYear) {
+                            break; // valid year, exit the loop
+                        } else {
+                            System.out.println("Invalid year. Please enter a value between 1895 and " + currentYear + ".");
+                        }
+                    } catch (NumberFormatException e) {
+                        System.out.println("Please enter a valid number for the year.");
+                    }
+                }
             } else {
                 System.out.print("Enter the new value for " + partToEdit + ": ");
             }
