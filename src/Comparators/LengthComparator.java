@@ -1,4 +1,7 @@
+package Comparators;
+
 import java.util.Comparator;
+import DomainModel.Movie;
 
 public class LengthComparator implements Comparator<Movie> {
     @Override

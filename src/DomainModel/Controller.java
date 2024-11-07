@@ -1,3 +1,11 @@
+package DomainModel;
+
+import Comparators.LengthComparator;
+import Comparators.TitleComparator;
+import Comparators.YearComparator;
+import FileHandler.FileHandler;
+
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;

@@ -1,13 +1,13 @@
+package DomainModel;
+
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
 
 public class MovieCollection {
 
     private ArrayList<Movie> listOfMovies;
 
-    MovieCollection() {
+    public MovieCollection() {
         listOfMovies = new ArrayList<>();
     }
 
@@ -37,7 +37,7 @@ public class MovieCollection {
         if (!s.isEmpty()){
             return s;
         } else {
-            return "Movie not found.";
+            return "DomainModel.Movie not found.";
         }
     }
 
@@ -55,10 +55,6 @@ public class MovieCollection {
         String titleOfRemovedMovie = movieToBeRemoved.getTitle();
         listOfMovies.remove(movieToBeRemoved);
         return titleOfRemovedMovie + " has been removed from our list of movies!";
-    }
-
-    public ArrayList<Movie> getMovies(ArrayList<Movie> movies) {
-        return listOfMovies;
     }
 
     public void clearMovieList(){

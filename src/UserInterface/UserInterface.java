@@ -1,3 +1,8 @@
+package UserInterface;
+
+import DomainModel.Controller;
+import DomainModel.Movie;
+
 import java.util.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
