@@ -100,6 +100,7 @@ public class UserInterface {
 
                     if (moreThanOneMovie.isEmpty()) {
                         System.out.println("no such movie exist on our list of movies.");
+                        cont.saveMovies();
                         continue;
                     }
 
