@@ -61,24 +61,6 @@ public class MovieCollection {
         return listOfMovies;
     }
 
-    public void sortMoviesByTitle() {
-        Collections.sort(listOfMovies, Comparator.comparing(movie -> {
-            String title = movie.getTitle();
-            if (title.toLowerCase().startsWith("the ")) {
-                return title.substring(4); //skip "the" and start from the next word
-            }
-            return title;
-        }));
-    }
-
-    public void sortMoviesByYear() {
-        Collections.sort(listOfMovies, Comparator.comparingInt(Movie::getYearCreated));
-    }
-
-    public void sortMoviesByLengthInMinutes() {
-        Collections.sort(listOfMovies, Comparator.comparingInt(Movie::getLengthInMinutes));
-    }
-
     public void clearMovieList(){
         listOfMovies.clear();
     }

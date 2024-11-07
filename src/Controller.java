@@ -1,4 +1,7 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 public class Controller {
 
@@ -35,18 +38,6 @@ public class Controller {
         movieCollection.clearMovieList();
     }
 
-    public void sortMoviesByTitle() {
-        movieCollection.sortMoviesByTitle();
-    }
-
-    public void sortMoviesByYear() {
-        movieCollection.sortMoviesByYear();
-    }
-
-    public void sortMoviesByLengthInMinutes() {
-        movieCollection.sortMoviesByLengthInMinutes();
-    }
-
     public ArrayList<Movie> loadFromFile(){
         return fh.loadFromFile();
     }
@@ -61,5 +52,29 @@ public class Controller {
 
     public void deleteOldFileAndCreateNewEmptyFile(){
         fh.deleteOldFileAndCreateNewEmptyFile();
+    }
+
+
+    public Comparator<Movie> getComparatorByTitle() {
+        return new TitleComparator();
+    }
+
+    public Comparator<Movie> getComparatorByYear() {
+        return new YearComparator();
+    }
+
+    public Comparator<Movie> getComparatorByLength() {
+        return new LengthComparator();
+    }
+
+    public void sortMovies(List<Comparator<Movie>> comparators) {
+        if (comparators.isEmpty()) return;
+
+        Comparator<Movie> combinedComparator = comparators.get(0);
+        for (int i = 1; i < comparators.size(); i++) {
+            combinedComparator = combinedComparator.thenComparing(comparators.get(i));
+        }
+
+        movieCollection.getMovies().sort(combinedComparator);
     }
 }

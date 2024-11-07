@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
 
 public class UserInterface {
     private Controller cont = new Controller();
@@ -57,29 +55,32 @@ public class UserInterface {
 
                 case "2", "show", "show movies" -> {
                     cont.setListOfMovies(cont.loadFromFile());
-                    System.out.println("Please enter the number of how you wish to sort the movies: ");
-                    System.out.println("1) title a-z");
-                    System.out.println("2) year created");
-                    System.out.println("3) length");
-                    String sortOption = sc.nextLine();
-                    switch (sortOption) {
-                        case "1" -> {
-                            cont.sortMoviesByTitle();
-                            System.out.println(cont.showMovies());
+                    List<Comparator<Movie>> chosenComparators = new ArrayList<>();
+
+                    boolean addMoreSorting = true;
+                    while (addMoreSorting) {
+                        System.out.println("Choose a sorting criterion:");
+                        System.out.println("1) Title A-Z");
+                        System.out.println("2) Year Created");
+                        System.out.println("3) Length in Minutes");
+
+                        String sortOption = sc.nextLine();
+                        switch (sortOption) {
+                            case "1" -> chosenComparators.add(cont.getComparatorByTitle());
+                            case "2" -> chosenComparators.add(cont.getComparatorByYear());
+                            case "3" -> chosenComparators.add(cont.getComparatorByLength());
+                            default -> System.out.println("Invalid option. Please choose a valid criterion.");
                         }
-                        case "2" -> {
-                            cont.sortMoviesByYear();
-                            System.out.println(cont.showMovies());
-                        }
-                        case "3" -> {
-                            cont.sortMoviesByLengthInMinutes();
-                            System.out.println(cont.showMovies());
-                        }
-                        default -> {
-                            System.out.println("Invalid option. Showing unsorted list.");
-                            System.out.println(cont.showMovies());
-                        }
+
+                        cont.sortMovies(chosenComparators);
+                        System.out.println("Movies sorted by chosen criteria:");
+                        System.out.println(cont.showMovies());
+
+                        System.out.println("Would you like to add another sorting criterion? (yes/no)");
+                        String response = sc.nextLine();
+                        addMoreSorting = response.equalsIgnoreCase("yes");
                     }
+
                     cont.clearMovieList();
                 }
 
