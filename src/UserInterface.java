@@ -268,7 +268,7 @@ public class UserInterface {
             System.out.println("Please enter a non-empty string value");
             input = sc.nextLine();
         }
-        return input.substring(0, 1).toUpperCase() + input.substring(1);
+        return cont.firstLetterToUpper(input);
     }
 
     private void editMovieProperties(Movie movie) {

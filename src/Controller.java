@@ -62,4 +62,8 @@ public class Controller {
     public void deleteOldFileAndCreateNewEmptyFile(){
         fh.deleteOldFileAndCreateNewEmptyFile();
     }
+
+    public String firstLetterToUpper(String str){
+        return Movie.firstLetterToUpper(str);
+    }
 }

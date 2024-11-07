@@ -72,27 +72,29 @@ public class Movie implements Serializable {
     }
 
     @Override
-    public String toString (){
+    public String toString() {
         String s = "";
-        if (isInColor){
+        if (isInColor) {
             s = "Yes";
         } else {
             s = "No";
         }
 
         return String.format("%s \n\tDirector: %s \n\tYear created: %d \n\tIn color: %s \n\tLength in minutes: %d \n\tGenre: %s \n"
-                ,title, director, yearCreated, s, lengthInMinutes, genre);
+                , title, director, yearCreated, s, lengthInMinutes, genre);
     }
 
     public String editProperty(String partToEdit, String newValue) {
         switch (partToEdit.toLowerCase()) {
             case "title" -> {
-                setTitle(newValue);
-                return "Title has been changed to " + newValue;
+                String title = firstLetterToUpper(newValue);
+                setTitle(title);
+                return "Title has been changed to " + title;
             }
             case "director" -> {
-                setDirector(newValue);
-                return "Director has been changed to " + newValue;
+                String director = firstLetterToUpper(newValue);
+                setDirector(director);
+                return "Director has been changed to " + director;
             }
             case "year", "year created" -> {
                 try {
@@ -118,8 +120,9 @@ public class Movie implements Serializable {
                 }
             }
             case "genre" -> {
-                setGenre(newValue);
-                return "Genre has been changed to " + newValue;
+                String genre = firstLetterToUpper(newValue);
+                setGenre(genre);
+                return "Genre has been changed to " + genre;
             }
             default -> {
                 return "No such part exist to edit.";
@@ -128,6 +131,21 @@ public class Movie implements Serializable {
     }
 
     public String toCSVStyle() {
-        return "\n"+title + "," + director + "," + yearCreated + "," + isInColor + "," + lengthInMinutes + "," + genre;
+        return "\n" + title + "," + director + "," + yearCreated + "," + isInColor + "," + lengthInMinutes + "," + genre;
+    }
+
+    public static String firstLetterToUpper(String string) {
+        string = string.toLowerCase();
+        String finalString = "";
+        if (string.contains(" ")) {
+            String[] strings = string.split("\\s+");
+            for (String strs : strings) {
+                String s = strs.substring(0, 1).toUpperCase() + strs.substring(1);
+                finalString += s + " ";
+            }
+            return finalString;
+        } else {
+            return string.substring(0, 1).toUpperCase() + string.substring(1);
+        }
     }
 }
