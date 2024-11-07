@@ -37,18 +37,6 @@ public class Controller {
         movieCollection.clearMovieList();
     }
 
-    public void sortMoviesByTitle() {
-        movieCollection.sortMoviesByTitle();
-    }
-
-    public void sortMoviesByYear() {
-        movieCollection.sortMoviesByYear();
-    }
-
-    public void sortMoviesByLengthInMinutes() {
-        movieCollection.sortMoviesByLengthInMinutes();
-    }
-
     public ArrayList<Movie> loadFromFile() {
         return fh.loadFromFile();
     }
