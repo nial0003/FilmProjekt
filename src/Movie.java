@@ -31,10 +31,6 @@ public class Movie implements Serializable {
         this.title = title;
     }
 
-    public String getDirector() {
-        return director;
-    }
-
     public void setDirector(String director) {
         this.director = director;
     }
@@ -47,10 +43,6 @@ public class Movie implements Serializable {
         this.yearCreated = yearCreated;
     }
 
-    public boolean isInColor() {
-        return isInColor;
-    }
-
     public void setInColor(boolean inColor) {
         isInColor = inColor;
     }
@@ -61,10 +53,6 @@ public class Movie implements Serializable {
 
     public void setLengthInMinutes(int lengthInMinutes) {
         this.lengthInMinutes = lengthInMinutes;
-    }
-
-    public String getGenre() {
-        return genre;
     }
 
     public void setGenre(String genre) {

@@ -93,7 +93,6 @@ public class UserInterface {
                     System.out.println("Enter the title of the movie you wish to edit: ");
                     //Loads the list of movies from the file into the arrayList in the movie collection
                     cont.setListOfMovies(cont.loadFromFile());
-                    cont.deleteOldFileAndCreateNewEmptyFile();
 
                     //Does the movie exist. If not print "movie does not exist"
                     ArrayList<Movie> moreThanOneMovie = cont.findMovieObject(sc.nextLine());
@@ -137,6 +136,7 @@ public class UserInterface {
                         editMovieProperties(chosenMovie);
                     }
 
+                    cont.deleteOldFileAndCreateNewEmptyFile();
                     //Saves the arrayList of movies with the edited movie onto the newly created file.
                     cont.saveMovies();
                 }
