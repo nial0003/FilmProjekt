@@ -1,4 +1,8 @@
 import java.util.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class UserInterface {
     private Controller cont = new Controller();
@@ -43,7 +47,7 @@ public class UserInterface {
                 case "1", "create", "create movie" -> {
                     createMovieCase();
                     while (true) {
-                        System.out.println("Do you wish to creat another movie yes/no?");
+                        System.out.println("Do you wish to create another movie yes/no?");
                         if (sc.nextLine().equalsIgnoreCase("yes")) {
                             createMovieCase();
                         } else {
@@ -80,7 +84,6 @@ public class UserInterface {
                         String response = sc.nextLine();
                         addMoreSorting = response.equalsIgnoreCase("yes");
                     }
-
                     cont.clearMovieList();
                 }
 
@@ -91,7 +94,7 @@ public class UserInterface {
                 }
 
                 case "4", "edit", "edit movie" -> {
-                    System.out.println("Enter the title of the movie you wish to edit: ");
+                    System.out.println("Enter the title of the movie, you wish to edit: ");
                     //Loads the list of movies from the file into the arrayList in the movie collection
                     cont.setListOfMovies(cont.loadFromFile());
                     cont.deleteOldFileAndCreateNewEmptyFile();
@@ -224,12 +227,20 @@ public class UserInterface {
         String movieDirector = checkValidString(sc.nextLine());
 
         System.out.println("Year created: ");
-        int yearCreated;
-        try {
-            yearCreated = sc.nextInt();
-        } catch (InputMismatchException e) {
-            boolean isInteger = false;
-            yearCreated = validIntCheck(isInteger, "Year created");
+        int yearCreated = 0;
+        int currentYear = LocalDate.now().getYear();
+        while (true) {
+            try {
+                yearCreated = sc.nextInt();
+                if (yearCreated >= 1895 && yearCreated <= currentYear) {
+                    break;
+                } else {
+                    System.out.println("Please enter a year between 1895 and " + currentYear + ".");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter a numeric value for the year.");
+                sc.next();
+            }
         }
         sc.nextLine();
 
@@ -279,6 +290,22 @@ public class UserInterface {
 
             if (partToEdit.equalsIgnoreCase("color") || partToEdit.equalsIgnoreCase("is in color")) {
                 System.out.print("Enter the new value for " + partToEdit + " yes/no: ");
+            } else if (partToEdit.equalsIgnoreCase("year") || partToEdit.equalsIgnoreCase("year created")) {
+                int currentYear = LocalDate.now().getYear();
+                while (true) {
+                    System.out.print("Enter the new value for " + partToEdit);
+                    String newValue = sc.nextLine();
+                    try {
+                        int year = Integer.parseInt(newValue);
+                        if (year >= 1895 && year <= currentYear) {
+                            break; // valid year, exit the loop
+                        } else {
+                            System.out.println("Invalid year. Please enter a value between 1895 and " + currentYear + ".");
+                        }
+                    } catch (NumberFormatException e) {
+                        System.out.println("Please enter a valid number for the year.");
+                    }
+                }
             } else {
                 System.out.print("Enter the new value for " + partToEdit + ": ");
             }
