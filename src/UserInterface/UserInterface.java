@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class UserInterface {
     private Controller cont = new Controller();
-    Scanner sc = new Scanner(System.in);
+    private Scanner sc = new Scanner(System.in);
 
     public void startProgram() {
 
@@ -35,9 +35,9 @@ public class UserInterface {
                 """;
 
 
-//print of string art
+        //print of string art
         System.out.println(art);
-
+        // Main program loop to display menu and handle user actions
         while (true) {
             System.out.println("""
                     1. Create movie
