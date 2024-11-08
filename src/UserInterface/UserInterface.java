@@ -292,6 +292,7 @@ public class UserInterface {
         while (true) {
             System.out.print("What would you like to edit (title, director, year created, is in color, length, genre)?");
             String partToEdit = sc.nextLine();
+            String newValue = "";
 
             if (partToEdit.equalsIgnoreCase("color") || partToEdit.equalsIgnoreCase("is in color")) {
                 System.out.print("Enter the new value for " + partToEdit + " yes/no: ");
@@ -299,7 +300,7 @@ public class UserInterface {
                 int currentYear = LocalDate.now().getYear();
                 while (true) {
                     System.out.print("Enter the new value for " + partToEdit);
-                    String newValue = sc.nextLine();
+                    newValue = sc.nextLine();
                     try {
                         int year = Integer.parseInt(newValue);
                         if (year >= 1895 && year <= currentYear) {
@@ -314,7 +315,6 @@ public class UserInterface {
             } else {
                 System.out.print("Enter the new value for " + partToEdit + ": ");
             }
-            String newValue = sc.nextLine();
 
             // Call editProperty and print the result message
             String resultMessage = cont.editProperty(partToEdit, newValue, movie);
